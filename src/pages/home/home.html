@@ -1,18 +1,24 @@
-<div>
-    <ion-slides #mySlides autoplay=2000 loop='true' pager='true'>
+<ion-grid>
+    <ion-row>
+        <ion-col>
+            <ion-slides #mySlides autoplay=2000 loop='true' pager='true'>
 
-        <ion-slide *ngFor="let adPicSrc of adPicSrcs">
-            <img [src]="adPicSrc">
-        </ion-slide>
-    </ion-slides>
-</div>
-<div>
-    <ion-content padding>
-        <div float-left>
-            <b>float-left</b><br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac vehicula lorem.
-        </div>
-        <div float-right>
-            <b>float-right</b><br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac vehicula lorem.
-        </div>
-    </ion-content>
-</div>
+                <ion-slide *ngFor="let adPicSrc of adPicSrcs">
+                    <img [src]="adPicSrc">
+                </ion-slide>
+            </ion-slides>
+            </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <ion-content padding>
+                <div float-left>
+                    <b>float-left</b><br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac vehicula lorem.
+                </div>
+                <div float-right>
+                    <b>float-right</b><br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac vehicula lorem.
+                </div>
+            </ion-content>
+            </ion-col>
+    </ion-row>
+</ion-grid>

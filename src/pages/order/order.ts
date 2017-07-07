@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
@@ -10,15 +11,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 @IonicPage()
 @Component({
   selector: 'page-order',
-  templateUrl: 'order.html',
+  templateUrl: 'order.html'
 })
 export class OrderPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  myDomSanitizer: DomSanitizer;
+  mySafeHtml: SafeHtml;
+  constructor(public navCtrl: NavController, public navParams: NavParams,public domSanitizer:DomSanitizer) {
+    this.myDomSanitizer = domSanitizer;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrderPage');
+    this.mySafeHtml = this.myDomSanitizer.bypassSecurityTrustResourceUrl("javascript:testMap()");
   }
 
 }

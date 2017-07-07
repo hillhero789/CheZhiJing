@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8">
   <title>Ionic App</title>
@@ -10,7 +11,7 @@
   <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#4e8ef7">
- 
+
   <!-- cordova.js required for cordova apps -->
   <script src="cordova.js"></script>
 
@@ -26,6 +27,7 @@
   <link href="build/main.css" rel="stylesheet">
 
 </head>
+
 <body>
 
   <!-- Ionic's root component and where the app will load -->
@@ -37,5 +39,19 @@
   <!-- The bundle js is generated during the build process -->
   <script src="build/main.js"></script>
 
+
+  <!-- 百度地图模块hughchiu -->
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=NPqDFGkOsI9OpxQ7h3mClV2nRW7LXVgL"></script>
+
+  <script type="text/javascript">
+    function testMap() {
+      var map = new BMap.Map("container");          // 创建地图实例  
+      var point = new BMap.Point(116.404, 39.915);  // 创建点坐标  
+      map.centerAndZoom(point, 15);                 // 初始化地图，设置中心点坐标和地图级别  
+      console.log(map);
+    }
+  </script>
+  <!-- 百度地图模块hughchiu -->
 </body>
+
 </html>

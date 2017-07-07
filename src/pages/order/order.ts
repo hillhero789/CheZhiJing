@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 /**
  * Generated class for the OrderPage page.
  *

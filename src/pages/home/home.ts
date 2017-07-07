@@ -1,42 +1,27 @@
-import { Component,AfterViewInit } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { AdServiceProvider } from '../../providers/ad-service/ad-service';
 
-import { Slides } from 'ionic-angular';
-import { ViewChild } from '@angular/core';
-
-import * as AV from 'leancloud-storage';
-
+/**
+ * Generated class for the HomePage page.
+ *
+ * See http://ionicframework.com/docs/components/#navigation for more info
+ * on Ionic pages and navigation.
+ */
+@IonicPage()
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
 })
-export class HomePage{
-  @ViewChild('mySlides') slidesForAd:Slides
-  constructor(public navCtrl: NavController) {
-
-    /* 
-     var APP_ID = 'jFJHb5ixb7XLc2tXMH5NfQuT-gzGzoHsz';
-     var APP_KEY = 'Ys2e9epw49uvfXKaUoGFyy0m';
- 
-     AV.init({
-       appId: APP_ID,
-       appKey: APP_KEY
-     });
- 
-     var TestObject = AV.Object.extend('TestObject');
-     var testObject = new TestObject();
-     testObject.save({
-       words: 'Hello World!'
-     }).then(function (object) {
-       console.log('rocks!')
-     })
-   */
+export class HomePage {
+  adPicSrcs: Array<string>;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public adService: AdServiceProvider) {
+    this.adPicSrcs = adService.getAdPicAddr();
   }
-  
-  
-  onImgClick(){
-    console.log(this.slidesForAd.length());
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad HomePage');
   }
 
 }

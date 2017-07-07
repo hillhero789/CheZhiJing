@@ -1,25 +1,18 @@
 <div>
-  <ion-slides #mySlides autoplay=2000 loop='true' pager='true'>
+    <ion-slides #mySlides autoplay=2000 loop='true' pager='true'>
 
-    <ion-slide>
-      <img src="../../assets/pic/ad1.jpg" (click)='onImgClick()'>
-    </ion-slide>
-
-    <ion-slide>
-      <img src="../../assets/pic/ad2.jpg">
-    </ion-slide>
-
-    <ion-slide>
-      <img src="../../assets/pic/ad3.jpg">
-    </ion-slide>
-
-  </ion-slides>
+        <ion-slide *ngFor="let adPicSrc of adPicSrcs">
+            <img [src]="adPicSrc">
+        </ion-slide>
+    </ion-slides>
 </div>
 <div>
-  <ion-content padding>
-    The world is your oyster.
-    <p>
-      If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-    </p>
-  </ion-content>
+    <ion-content padding>
+        <div float-left>
+            <b>float-left</b><br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac vehicula lorem.
+        </div>
+        <div float-right>
+            <b>float-right</b><br> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac vehicula lorem.
+        </div>
+    </ion-content>
 </div>

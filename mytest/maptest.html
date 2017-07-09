@@ -17,25 +17,70 @@
         }
 
         #container {
-            height: 100%
+            height: 50%
+        }
+
+        #search_container {
+            height: 10%
         }
     </style>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=NPqDFGkOsI9OpxQ7h3mClV2nRW7LXVgL">
         //v2.0版本的引用方式：src="http://api.map.baidu.com/api?v=2.0&ak=您的密钥"
 //v1.4版本及以前版本的引用方式：src="http://api.map.baidu.com/api?v=1.4&key=您的密钥&callback=initialize"
-
     </script>
+    <script type="text/javascript" src="SearchControl.js"></script>
 </head>
 
 <body>
     <div id="container"></div>
+    <div id="search_container"></div>
+    <input type="input" id="autocom">
     <script type="text/javascript">
-        function testMap() {
-            var map = new BMap.Map("container");          // 创建地图实例  
-            var point = new BMap.Point(116.404, 39.915);  // 创建点坐标  
-            map.centerAndZoom(point, 15);                 // 初始化地图，设置中心点坐标和地图级别  
+        function testSearchControl() {
+            var bmap = new BMap.Map("container");
+            bmap.centerAndZoom(new BMap.Point(116.404, 39.915), 15);
+            //创建检索控件
+            var searchControl = new BMapLib.SearchControl({
+                type: LOCAL_SEARCH,//检索类型
+                container: "search_container", //存放控件的容器
+                map: bmap  //关联地图对象
+            });
         }
-        testMap();
+        //testSearchControl();
+        function testAutoComplete() {
+            var map = new BMap.Map("container");
+            var ac = new BMap.Autocomplete({
+                location: "深圳市",
+                types: "",
+                onSearchComplete: function () {
+                    console.log(ac.getResults().getNumPois());
+                },
+                input: "autocom"
+            }
+
+            );
+            map.centerAndZoom(new BMap.Point(113.5, 22.3), 11);
+            map.addEventListener("dragend", function () {
+                var center = map.getCenter();
+                //alert("地图中心点变更为：" + center.lng + ", " + center.lat);
+                ac.setLocation(center);
+                ac.search("1");
+            });
+        }
+        //testAutoComplete();
+
+        function testLocalSearch() {
+            var map = new BMap.Map("container");
+            var al = new BMap.LocalSearch("深圳市");
+            map.centerAndZoom(new BMap.Point(113.5, 22.3), 11);
+            map.addEventListener("dragend", function () {
+                var center = map.getCenter();
+                //alert("地图中心点变更为：" + center.lng + ", " + center.lat);
+                al.search("停车场");
+                console.log(al.getResults().getNumPois());
+            });
+        }
+        testLocalSearch();
     </script>
 </body>
 
